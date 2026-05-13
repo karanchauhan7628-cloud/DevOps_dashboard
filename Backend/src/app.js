@@ -29,11 +29,22 @@ app.use(
       }
     },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
 
 app.use(express.json());
 app.use(cookieParser());
+
+// Root route — confirms backend is alive (needed for Render health checks)
+app.get("/", (req, res) => {
+  res.status(200).json({
+    status: "ok",
+    message: "DevOps Dashboard API is running",
+    timestamp: new Date().toISOString(),
+  });
+});
 
 app.use("/api/auth", authRouter);
 app.use("/api/deployments", authMiddleware.authUser, deploymentRoutes);

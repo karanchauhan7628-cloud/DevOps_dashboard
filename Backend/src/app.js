@@ -11,7 +11,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://dev-ops-dashboard-six.vercel.app"
+  "https://dev-ops-dashboard-six.vercel.app/api"
 ];
 
 app.use(

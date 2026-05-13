@@ -36,23 +36,22 @@ export default function Dashboard() {
         const healthRes = await getHealthMetrics();
         const logsRes = await getLogs();
 
-        const deploymentData = deploymentsRes.data;
-        const healthData = healthRes.data;
-        const logData = logsRes.data;
+        const deploymentData = Array.isArray(deploymentsRes.data) ? deploymentsRes.data : [];
+        const healthData = Array.isArray(healthRes.data) ? healthRes.data : [];
+        const logData = Array.isArray(logsRes.data) ? logsRes.data : [];
 
         setDeployments(deploymentData);
         setLogs(logData);
 
-        const latestMetric =
-          Array.isArray(healthData) && healthData.length > 0
-            ? healthData[0]
-            : null;
+        const latestMetric = healthData.length > 0 ? healthData[0] : null;
         setLatestHealth(latestMetric);
 
         const countsByDay = [0, 0, 0, 0, 0, 0, 0];
         deploymentData.forEach((item) => {
-          const date = new Date(item.createdAt || item.deployedAt);
-          countsByDay[date.getDay()] += 1;
+          if (item.createdAt || item.deployedAt) {
+            const date = new Date(item.createdAt || item.deployedAt);
+            countsByDay[date.getDay()] += 1;
+          }
         });
 
         const maxCount = Math.max(...countsByDay, 1);

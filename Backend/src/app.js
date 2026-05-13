@@ -10,9 +10,7 @@ const app = express();
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const allowedOrigins = [
-  "http://localhost:5173",
-  "https://dev-ops-alpha-five.vercel.app",
-  "https://dev-ops-git-main-bbhumi908-9265s-projects.vercel.app",
+  "http://localhost:5173"
 ];
 
 app.use(

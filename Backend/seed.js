@@ -106,12 +106,12 @@ const seedData = async () => {
     ]);
 
     await SystemMetrics.create({
-      cpuUsage: 48,
-      memoryUsage: 63,
-      activeDeploys: 2,
-      criticalErrors: 1,
-      status: "degraded",
-    });
+  cpuUsage: 48,
+  memoryUsage: 63,
+  activeDeploys: 2,
+  criticalErrors: 1,
+  status: "stable",
+});
 
     console.log("Database seeded successfully! ✅");
     process.exit(0);

@@ -23,6 +23,7 @@ const seedData = async () => {
         duration: 120,
         owner: "Karan",
         region: "us-east-1",
+        createdAt: new Date("2026-05-09T10:30:00"),
       },
       {
         serviceName: "Frontend Dashboard",
@@ -33,6 +34,7 @@ const seedData = async () => {
         duration: 0,
         owner: "Karan",
         region: "us-east-1",
+        createdAt: new Date("2026-05-10T11:15:00"),
       },
       {
         serviceName: "Auth Service",
@@ -43,6 +45,10 @@ const seedData = async () => {
         duration: 45,
         owner: "Karan",
         region: "us-east-1",
+<<<<<<< HEAD
+=======
+        createdAt: new Date("2026-05-11T14:20:00"),
+>>>>>>> c7fdbab (clean backend folder structure)
       },
       {
         serviceName: "Database Service",
@@ -53,6 +59,10 @@ const seedData = async () => {
         duration: 95,
         owner: "Karan",
         region: "us-east-1",
+<<<<<<< HEAD
+=======
+        createdAt: new Date("2026-05-12T09:40:00"),
+>>>>>>> c7fdbab (clean backend folder structure)
       },
       {
         serviceName: "Logging Service",
@@ -63,6 +73,21 @@ const seedData = async () => {
         duration: 0,
         owner: "Karan",
         region: "us-east-1",
+<<<<<<< HEAD
+=======
+        createdAt: new Date("2026-05-13T16:10:00"),
+      },
+      {
+        serviceName: "Notification Service",
+        version: "v0.7.4",
+        commitId: "u8v9w0x",
+        environment: "production",
+        status: "success",
+        duration: 85,
+        owner: "Karan",
+        region: "us-east-1",
+        createdAt: new Date("2026-05-13T18:25:00"),
+>>>>>>> c7fdbab (clean backend folder structure)
       },
     ]);
 
@@ -106,12 +131,21 @@ const seedData = async () => {
     ]);
 
     await SystemMetrics.create({
+<<<<<<< HEAD
   cpuUsage: 48,
   memoryUsage: 63,
   activeDeploys: 2,
   criticalErrors: 1,
   status: "stable",
 });
+=======
+      cpuUsage: 48,
+      memoryUsage: 63,
+      activeDeploys: 2,
+      criticalErrors: 1,
+      status: "stable",
+    });
+>>>>>>> c7fdbab (clean backend folder structure)
 
     console.log("Database seeded successfully! ✅");
     process.exit(0);

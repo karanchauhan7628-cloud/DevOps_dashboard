@@ -9,13 +9,11 @@ const seedData = async () => {
     await mongoose.connect(process.env.MONGO_URI);
     console.log("Connected to MongoDB for seeding...");
 
-    // Clear existing data (optional, but good for a clean state)
     await Deployment.deleteMany({});
     await Log.deleteMany({});
     await SystemMetrics.deleteMany({});
 
-    // Create Dummy Deployments
-    const deployments = await Deployment.create([
+    await Deployment.create([
       {
         serviceName: "Backend API",
         version: "v1.0.1",
@@ -45,10 +43,29 @@ const seedData = async () => {
         duration: 45,
         owner: "Karan",
         region: "us-east-1",
-      }
+      },
+      {
+        serviceName: "Database Service",
+        version: "v1.1.0",
+        commitId: "m2n3o4p",
+        environment: "production",
+        status: "success",
+        duration: 95,
+        owner: "Karan",
+        region: "us-east-1",
+      },
+      {
+        serviceName: "Logging Service",
+        version: "v0.8.2",
+        commitId: "q5r6s7t",
+        environment: "staging",
+        status: "pending",
+        duration: 0,
+        owner: "Karan",
+        region: "us-east-1",
+      },
     ]);
 
-    // Create Dummy Logs
     await Log.create([
       {
         level: "info",
@@ -57,20 +74,43 @@ const seedData = async () => {
         environment: "production",
       },
       {
+        level: "info",
+        service: "Frontend Dashboard",
+        message: "Deployment pipeline triggered",
+        environment: "staging",
+      },
+      {
+        level: "warning",
+        service: "Database Service",
+        message: "Database response time slightly increased",
+        environment: "production",
+      },
+      {
         level: "error",
         service: "Auth Service",
         message: "Invalid login attempt",
         environment: "development",
-      }
+      },
+      {
+        level: "info",
+        service: "Backend API",
+        message: "Health check completed successfully",
+        environment: "production",
+      },
+      {
+        level: "debug",
+        service: "Logging Service",
+        message: "Log stream initialized",
+        environment: "staging",
+      },
     ]);
 
-    // Create Dummy Metrics
     await SystemMetrics.create({
-      cpuUsage: 45,
-      memoryUsage: 60,
+      cpuUsage: 48,
+      memoryUsage: 63,
       activeDeploys: 2,
-      criticalErrors: 0,
-      status: "stable",
+      criticalErrors: 1,
+      status: "degraded",
     });
 
     console.log("Database seeded successfully! ✅");
